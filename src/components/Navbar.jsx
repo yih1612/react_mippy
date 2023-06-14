@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BsShop } from "react-icons/bs";
 import { HiOutlinePencilAlt } from "react-icons/hi";
+import { login } from "../api/firebase";
 
 export default function Header() {
   return (
@@ -16,7 +17,7 @@ export default function Header() {
         <Link to="/products/new" className="text-2xl">
           <HiOutlinePencilAlt />
         </Link>
-        <button>Login</button>
+        <button onClick={login}>Login</button>
       </nav>
     </header>
   );
