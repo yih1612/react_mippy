@@ -4,6 +4,7 @@ import { BsShop } from "react-icons/bs";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { login, logout, onUserStateChange } from "../api/firebase";
 import User from "./User";
+import Button from "./ui/Button";
 
 export default function Header() {
   const [user, setUser] = useState();
@@ -23,12 +24,14 @@ export default function Header() {
       <nav className=" flex items-center gap-4 font-medium">
         <Link to="/products">Products</Link>
         <Link to="/carts">Carts</Link>
-        <Link to="/products/new" className="text-2xl">
-          <HiOutlinePencilAlt />
-        </Link>
+        {user && user.isAdmin && (
+          <Link to="/products/new" className="text-2xl">
+            <HiOutlinePencilAlt />
+          </Link>
+        )}
         {user && <User user={user} />}
-        {!user && <button onClick={login}>Login</button>}
-        {user && <button onClick={logout}>Logout</button>}
+        {!user && <Button text={"login"} onClick={login} />}
+        {user && <Button text={"logout"} onClick={logout} />}
       </nav>
     </header>
   );
