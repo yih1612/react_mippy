@@ -6,6 +6,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+import { getDatabase, ref, child, get } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -15,10 +16,11 @@ const firebaseConfig = {
 };
 
 // firebase관련된 전반적인 설정이 저장
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 // getAuth() 하면 firebase에서 설정된 값이 포함된 auth를 리턴해준다
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
+const database = getDatabase(app);
 
 // TODO: login
 export function login() {
@@ -35,7 +37,21 @@ export function logout() {
 
 // TODO: user state change
 export function onUserStateChange(callback) {
-  onAuthStateChanged(auth, (user) => {
-    callback(user);
+  onAuthStateChanged(auth, async (user) => {
+    const updatedUser = user ? await adminUser(user) : null;
+    callback(updatedUser);
   });
+}
+
+// TODO: check admin
+async function adminUser(user) {
+  return get(ref(database, "admins")) //
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const admins = snapshot.val();
+        const isAdmin = admins.includes(user.uid);
+        return { ...user, isAdmin };
+      }
+      return user;
+    });
 }

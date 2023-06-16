@@ -28,6 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@firebase/app", "npm:0.9.12"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:42717c0164d0d0163300aad24e6ba2f8c2cfeada0242b688a26bf2130f02197ce55da543bbc0df09ac0def855e6f2f81933252226f4b4ff6924ad5d907125d3f#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:42717c0164d0d0163300aad24e6ba2f8c2cfeada0242b688a26bf2130f02197ce55da543bbc0df09ac0def855e6f2f81933252226f4b4ff6924ad5d907125d3f#npm:13.5.0"],\
@@ -13299,6 +13300,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["mippy", "workspace:."],\
+            ["@firebase/app", "npm:0.9.12"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:42717c0164d0d0163300aad24e6ba2f8c2cfeada0242b688a26bf2130f02197ce55da543bbc0df09ac0def855e6f2f81933252226f4b4ff6924ad5d907125d3f#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:42717c0164d0d0163300aad24e6ba2f8c2cfeada0242b688a26bf2130f02197ce55da543bbc0df09ac0def855e6f2f81933252226f4b4ff6924ad5d907125d3f#npm:13.5.0"],\

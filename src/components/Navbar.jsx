@@ -7,9 +7,11 @@ import User from "./User";
 
 export default function Header() {
   const [user, setUser] = useState();
-
   useEffect(() => {
-    onUserStateChange(setUser);
+    onUserStateChange((user) => {
+      console.log(user);
+      setUser(user);
+    });
   }, []);
 
   return (
