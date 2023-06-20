@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Button from "../components/ui/Button";
+import { uploadImage } from "../api/uploader";
+import { addNewProduct } from "../api/firebase";
 
 export default function NewProduct() {
   const [product, setProduct] = useState({});
@@ -7,7 +9,6 @@ export default function NewProduct() {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    console.log(e);
     if (name === "file") {
       setFile(files && files[0]);
       return;
@@ -16,10 +17,14 @@ export default function NewProduct() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    uploadImage(file).then((url) => {
+      console.log(url);
+      addNewProduct(product, url);
+    });
   };
   return (
     <section>
-      {file && <img src={URL.createObjectURL(file)} alit="local file" />}
+      {file && <img src={URL.createObjectURL(file)} alt="local file" />}
       <form onSubmit={handleSubmit}>
         <input
           type="file"
@@ -70,20 +75,6 @@ export default function NewProduct() {
         />
         <Button text={"제품 등록하기"} />
       </form>
-      {/* <span className="flex justify-center m-4 text-2xl font-semibold">
-        새로운 제품 등록
-      </span>
-      <form className="flex flex-col gap-2">
-        <Input type="file" accept="image/*" name="file" required onCha/>
-        <Input type="text" placeholder="제품명" />
-        <Input type="number" placeholder="가격" />
-        <Input type="text" placeholder="카테고리" />
-        <Input type="text" placeholder="제품설명" />
-        <Input type="text" placeholder="옵션들(콤마(,)로 구분)" />
-        <button className="p-3 bg-brand text-white text-lg">
-          제품 등록하기
-        </button>
-      </form> */}
     </section>
   );
 }

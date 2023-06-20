@@ -6,7 +6,6 @@ export default function ProtectedRoute({ children, requireAdmin }) {
 
   // user가 아니면 // (user가 Admin이 아니고 requiredAdmin이라는 프로티를 전달 받으면)
   if (user === undefined) {
-    console.log(user);
     return <>Loading.. 🚀</>;
   } else if (!user || (requireAdmin && !user.isAdmin)) {
     return <Navigate to="/" replace />;
