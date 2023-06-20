@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { BsShop } from "react-icons/bs";
 import { HiOutlinePencilAlt } from "react-icons/hi";
-import { login, logout, onUserStateChange } from "../api/firebase";
 import User from "./User";
 import Button from "./ui/Button";
+import { useAuthContext } from "./context/AuthContext";
 
 export default function Header() {
-  const [user, setUser] = useState();
-  useEffect(() => {
-    onUserStateChange((user) => {
-      console.log(user);
-      setUser(user);
-    });
-  }, []);
+  const { user, login, logout } = useAuthContext();
 
   return (
     <header className="flex justify-between border-b border-gray-300 p-2 pb-2 mb-2">
@@ -23,7 +17,7 @@ export default function Header() {
       </Link>
       <nav className=" flex items-center gap-4 font-medium">
         <Link to="/products">Products</Link>
-        <Link to="/carts">Carts</Link>
+        {user && <Link to="/carts">Carts</Link>}
         {user && user.isAdmin && (
           <Link to="/products/new" className="text-2xl">
             <HiOutlinePencilAlt />
