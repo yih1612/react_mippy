@@ -57,6 +57,7 @@ async function adminUser(user) {
     });
 }
 
+// TODO: add new product
 export async function addNewProduct(product, image) {
   const id = uuid();
   return set(ref(database, `products/${id}`), {
@@ -65,5 +66,15 @@ export async function addNewProduct(product, image) {
     price: parseInt(product.price),
     image,
     options: product.options.split(","),
+  });
+}
+
+// TODO: read products
+export async function getProducts() {
+  return get(ref(database, "products")).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
   });
 }
