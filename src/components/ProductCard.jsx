@@ -8,7 +8,7 @@ export default function ProductCard({
   const navigate = useNavigate();
   return (
     <li
-      className="rounded-lg shadow-lg overflow-hidden cursor-pointer  transition-all hover:scale-105 "
+      className="rounded-lg shadow-lg overflow-hidden cursor-pointer  transition-all hover:scale-105 ease-in"
       onClick={() => {
         navigate(`/products/${id}`, {
           state: { product },

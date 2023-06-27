@@ -7,7 +7,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getDatabase, ref, set, get } from "firebase/database";
+import { getDatabase, ref, set, get, remove } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -23,7 +23,6 @@ const auth = getAuth();
 const provider = new GoogleAuthProvider();
 const database = getDatabase(app);
 
-// TODO: login
 export function login() {
   signInWithPopup(auth, provider)
     // 콜백함수에서 전달하는 인자와 바로 호출하는 인자가 같으면 생략이 가능
@@ -31,7 +30,6 @@ export function login() {
     .catch(console.error);
 }
 
-// TODO: logout
 export function logout() {
   signOut(auth).catch(console.error);
 }
@@ -57,7 +55,6 @@ async function adminUser(user) {
     });
 }
 
-// TODO: add new product
 export async function addNewProduct(product, image) {
   const id = uuid();
   return set(ref(database, `products/${id}`), {
@@ -69,12 +66,28 @@ export async function addNewProduct(product, image) {
   });
 }
 
-// TODO: read products
 export async function getProducts() {
-  return get(ref(database, "products")).then((snapshot) => {
-    if (snapshot.exists()) {
-      return Object.values(snapshot.val());
-    }
-    return [];
-  });
+  return get(ref(database, "products")) //
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        return Object.values(snapshot.val());
+      }
+      return [];
+    });
+}
+
+export async function getCart(userId) {
+  return get(ref(database, `carts/${userId}`)) //
+    .then((snapshot) => {
+      const items = snapshot.val() || {};
+      return Object.values(items);
+    });
+}
+
+export async function addOrUpdateToCart(userId, product) {
+  return set(ref(database, `carts/${userId}/${product.id}`), product);
+}
+
+export async function removeFormCart(userId, productId) {
+  return remove(ref(database, `carts/${userId}/${productId}`));
 }
