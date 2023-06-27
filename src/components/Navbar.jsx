@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsShop, BsCart3 } from "react-icons/bs";
+import { BsShop } from "react-icons/bs";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import User from "./User";
 import Button from "./ui/Button";
 import { useAuthContext } from "../context/AuthContext";
+import CartStatus from "./CartStatus";
 
 export default function Header() {
   const { user, login, logout } = useAuthContext();
@@ -19,7 +20,7 @@ export default function Header() {
         <Link to="/products">Products</Link>
         {user && (
           <Link to="/carts">
-            <BsCart3 className="text-3xl " />
+            <CartStatus />
           </Link>
         )}
         {user && user.isAdmin && (
