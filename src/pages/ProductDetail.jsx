@@ -1,27 +1,34 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Button from "../components/ui/Button";
-import { useAuthContext } from "../context/AuthContext";
-import { addOrUpdateToCart } from "../api/firebase";
+import useCart from "../hooks/useCart";
 
 export default function ProductDetail() {
-  const { uid } = useAuthContext();
+  const { addOrUpdateItem } = useCart();
   const {
     state: {
       product: { id, title, category, description, image, price, options },
     },
   } = useLocation();
+  const [success, setSuccess] = useState();
   const [selected, setSelected] = useState(options && options[0]);
   const handleSelect = (e) => setSelected(e.target.value);
   const handleClick = (e) => {
     const product = { id, image, title, price, option: selected, quantity: 1 };
-    addOrUpdateToCart(uid, product);
+    addOrUpdateItem.mutate(product, {
+      onSuccess: () => {
+        setSuccess("장바구니에 추가되었습니다.");
+        setTimeout(() => setSuccess(null), 2000);
+      },
+    });
   };
   return (
     <>
       <p className="mx-12 mt-4 text-gray-600 font-semibold ">{category}</p>
       <section className="flex flex-col md:flex-row p-4 gap-7">
-        <img className="w-full px-4 basis-7/12" src={image} alt={title} />
+        <div className="w-full px-4 basis-7/12">
+          <img src={image} alt={title} />
+        </div>
         <div className="w-full basis-5/12 flex flex-col">
           <h2 className="py-2 text-3xl font-bold">{title}</h2>
           <h3 className="py-2 border-b-2  border-gray-300 text-2xl font-semibold">{`₩${price}`}</h3>
@@ -42,6 +49,7 @@ export default function ProductDetail() {
                 ))}
             </select>
           </div>
+          {success && <p className="my-2">✅ {success}</p>}
           <Button text={"장바구니에 추가"} onClick={handleClick} />
         </div>
       </section>
