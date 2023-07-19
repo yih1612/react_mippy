@@ -28,7 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["@firebase/app", "npm:0.9.12"],\
+            ["@firebase/app", "npm:0.9.14"],\
             ["@tanstack/react-query", "virtual:42717c0164d0d0163300aad24e6ba2f8c2cfeada0242b688a26bf2130f02197ce55da543bbc0df09ac0def855e6f2f81933252226f4b4ff6924ad5d907125d3f#npm:4.29.14"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:42717c0164d0d0163300aad24e6ba2f8c2cfeada0242b688a26bf2130f02197ce55da543bbc0df09ac0def855e6f2f81933252226f4b4ff6924ad5d907125d3f#npm:13.4.0"],\
@@ -3637,6 +3637,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@firebase-app-npm-0.9.12-528fc6bfd0-10f5733886.zip/node_modules/@firebase/app/",\
           "packageDependencies": [\
             ["@firebase/app", "npm:0.9.12"],\
+            ["@firebase/component", "npm:0.6.4"],\
+            ["@firebase/logger", "npm:0.4.0"],\
+            ["@firebase/util", "npm:1.9.3"],\
+            ["idb", "npm:7.1.1"],\
+            ["tslib", "npm:2.5.3"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.9.14", {\
+          "packageLocation": "./.yarn/cache/@firebase-app-npm-0.9.14-6a0a865c34-f506817ed1.zip/node_modules/@firebase/app/",\
+          "packageDependencies": [\
+            ["@firebase/app", "npm:0.9.14"],\
             ["@firebase/component", "npm:0.6.4"],\
             ["@firebase/logger", "npm:0.4.0"],\
             ["@firebase/util", "npm:1.9.3"],\
@@ -13343,7 +13355,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["mippy", "workspace:."],\
-            ["@firebase/app", "npm:0.9.12"],\
+            ["@firebase/app", "npm:0.9.14"],\
             ["@tanstack/react-query", "virtual:42717c0164d0d0163300aad24e6ba2f8c2cfeada0242b688a26bf2130f02197ce55da543bbc0df09ac0def855e6f2f81933252226f4b4ff6924ad5d907125d3f#npm:4.29.14"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:42717c0164d0d0163300aad24e6ba2f8c2cfeada0242b688a26bf2130f02197ce55da543bbc0df09ac0def855e6f2f81933252226f4b4ff6924ad5d907125d3f#npm:13.4.0"],\

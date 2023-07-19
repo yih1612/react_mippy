@@ -1969,7 +1969,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@firebase/app@npm:0.9.12, @firebase/app@npm:^0.9.12":
+"@firebase/app@npm:0.9.12":
   version: 0.9.12
   resolution: "@firebase/app@npm:0.9.12"
   dependencies:
@@ -1979,6 +1979,19 @@ __metadata:
     idb: 7.1.1
     tslib: ^2.1.0
   checksum: 10f5733886605744ec8006a7ee1190da51785e0aa3fa148e8f67a00283f13576837180cb57e355d4ac15b8102e1bd0da3cf4dfea0c741856dcc062ce1ef1bed2
+  languageName: node
+  linkType: hard
+
+"@firebase/app@npm:^0.9.14":
+  version: 0.9.14
+  resolution: "@firebase/app@npm:0.9.14"
+  dependencies:
+    "@firebase/component": 0.6.4
+    "@firebase/logger": 0.4.0
+    "@firebase/util": 1.9.3
+    idb: 7.1.1
+    tslib: ^2.1.0
+  checksum: f506817ed138973e8ca90adc4f279b2549ba6a57bd898b38733736ebdaf718e6ddd5a7c59c2537c2f80e53199320c9727dc3ffe0e47c8858693924c123b6e23e
   languageName: node
   linkType: hard
 
@@ -9610,7 +9623,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mippy@workspace:."
   dependencies:
-    "@firebase/app": ^0.9.12
+    "@firebase/app": ^0.9.14
     "@tanstack/react-query": ^4.29.14
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^13.0.0
