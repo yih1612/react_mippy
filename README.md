@@ -18,7 +18,3 @@
 
 ## 사이트
 https://timely-melba-7caea0.netlify.app
-
-  
-## Error 참고
-1. 배포 - Firebase version update, Firebase Authenticatoin(Authorized domains)
